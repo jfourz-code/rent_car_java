@@ -16,6 +16,16 @@ public class Main {
         // menyimpan list kendaraan dari func forListKendaraan()
         Kendaraan[] listKendaraan = forListKendaraan();
 
+        // menyimpan list sopir dari func forListSopir()
+        Sopir[] listSopir = forListSopir();
+
+        // pemicu looping
+        boolean mulai = true;
+
+        // looping dimulai
+        do {
+        System.out.println("");
+        System.out.println("========= Sewa Kendaraan =========");
         // looping menu
         for (int i = 0; i < menu.length; i++) {
             System.out.println((i + 1) + ". " + menu[i]);
@@ -38,7 +48,7 @@ public class Main {
                 listKendaraan[i].TampilkanNama();
             }
             
-            System.out.println();
+            System.out.println("");
             // user memilih mobil
             System.out.print("Pilih: " );
             int pilihMobil = input.nextInt();
@@ -55,7 +65,7 @@ public class Main {
                 // cek jika hari sewa kurang dari sama dengan 0
                 if (sewa <= 0) System.out.println("Input Tidak Valid");
 
-
+                // jika valid lanjut ke bagian ini
                 System.out.println("");
                 // menghitung diskon
                 double diskon =  listKendaraan[pilihanMobilUser].sewaLepas(sewa);
@@ -65,7 +75,7 @@ public class Main {
                 System.out.println("");
                 // user membayar
                 System.out.print("Uang Bayar: ");
-                double bayar = input.nextLong();
+                double bayar = input.nextDouble();
 
                 // cek kondisi
                 if (bayar < diskon) { // jika kurang makan akan ada pesan bahwa uang kurang
@@ -76,7 +86,94 @@ public class Main {
                     listKendaraan[pilihanMobilUser].KurangiStok();
                 }
             }
+
+        
+        } else if (pilihMenu == 2)  {
+            System.out.println("");
+            // print list kendaraan
+            System.out.println("List Kendaraan");
+            for (int i = 0; i < listKendaraan.length; i++) {
+                System.out.print((i + 1) + ". ");
+                listKendaraan[i].TampilkanNama();
+            }
+
+            System.out.println("");
+            // user memilih mobil
+            System.out.print("Pilih: " );
+            int pilihMobil = input.nextInt();
+
+            // pilihan mobil user 
+            int pilihanMobilUser = pilihMobil - 1;
+
+            // cek kondisi jika user memilih mobil diluar dari menu
+            if (pilihMobil <= 0 || pilihMobil > (listKendaraan.length)) {
+                System.out.println("Pilihan Tidak Valid");
+            } else { // selain itu lanjut ke hari sewa dan pembayaran
+                System.out.print("Berapa Hari Sewa: ");
+                int sewa = input.nextInt();
+                // cek jika hari sewa kurang dari sama dengan 0
+                if (sewa <= 0) System.out.println("Input Tidak Valid");
+
+                // jika valid lanjut ke bagian ini
+                System.out.println("");
+
+                // list sopir
+                System.out.println("========= Pilih Sopir =========");
+                for (int i = 0; i < listSopir.length; i++) {
+                    System.out.print((i + 1) + ". ");
+                    listSopir[i].TampilkanNamaSopir();
+                }
+
+                // memmilih sopir
+                System.out.println();
+                System.out.print("Pilih Sopir: ");
+                int pilihanSopir = input.nextInt();
+
+                // menyimpan pilihan sopir user
+                int pilihanSopirUser = pilihanSopir - 1;
+                // menyimpan nama sopir
+                String namaSopir = listSopir[pilihanSopirUser].getNamaSopir();
+                // menyimpan harga layanan sopir
+                double jasaSopir = listSopir[pilihanSopirUser].getHargaLayanan();
+                // menyimpan harga sewa mobil
+                double hargaSewaMobil = listKendaraan[pilihanMobilUser].hargaSewaKendaraan();
+
+                if (pilihanSopir <= 0 || pilihanSopir > listSopir.length) {
+                    System.out.println("Pilihan tidak valid!");
+                } else {
+                    // menghitung total harga
+                    double harga = listKendaraan[pilihanMobilUser].sewaPlusSopir(sewa, hargaSewaMobil);
+                    // menampilkan total ke user
+                    listKendaraan[pilihanMobilUser].TotalHargaSewaPlusSopir(namaSopir, sewa, jasaSopir);
+
+                    System.out.println("");
+                    // user membayar
+                    System.out.print("Uang Bayar: ");
+                    double bayar = input.nextDouble();
+
+                     // cek kondisi
+                    if (bayar < harga) { // jika kurang makan akan ada pesan bahwa uang kurang
+                        System.out.println("Maaf uang anda kurang..");
+                    } else { // jika tidak maka, akan menampilkan struk dan berhasil sewa
+                        listKendaraan[pilihanMobilUser].TotalHargaSewaPlusSopirStruk(namaSopir, sewa, jasaSopir, bayar);
+                        // dan kurangin stok dari kendaraannya 
+                        listKendaraan[pilihanMobilUser].KurangiStok();
+                    }
+                }
+            }
+        } else if (pilihMenu == 3) {
+            // tampilkan stok 
+            for (int i = 0; i < listKendaraan.length; i++) {
+                listKendaraan[i].TampilkanStok();
+            }
+        } else if (pilihMenu == 4 ) {
+            // user keluar
+            input.close();
+            mulai = false;
+            System.out.println("Anda Keluar.....");
         }
+        } while (mulai);
+
     }
 
     static Kendaraan[] forListKendaraan() {
