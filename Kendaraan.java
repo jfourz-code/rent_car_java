@@ -29,42 +29,45 @@ public class Kendaraan {
     public void TotalHargaSewa(int hariSewa, double diskonTotal) {
         double Total = hargSewa * hariSewa;
         System.out.println("");
-        System.out.println("=================================");
+        System.out.println("=============== Total Sewa Lepas ===============");
         System.out.println("Nama Kendaraan: " + namaKendaraan);
         System.out.printf("Total : %.0f x %d = %.0f%n", hargSewa, hariSewa, Total);
         System.out.println("Selamat Anda Mendapatkan Diskon 15%");
         System.out.printf("Total Bayar Menjadi : %.0f%n", diskonTotal);
+        System.out.println("-------------------------------------------------");
     }
 
     // method menampilkan struk total semuanya + diskon pada sewaLepas
     public void TotalHargaSewaDiskon(int hariSewa, double totalDiskon, double bayar) {
         System.out.println("");
-        System.out.println("=================================");
+        System.out.println("=============== Struk Sewa Lepas ===============");
         System.out.println("Nama Kendaraan: " + namaKendaraan);
+        System.out.println("Jumlah Hari Sewa: " + hariSewa);
         System.out.printf("Total + Diskon : %.0f x %d + 15%% Diskon = %.0f%n", hargSewa, hariSewa, totalDiskon);
         System.out.printf("Jumlah yang dibayar : %.0f%n", bayar);
         System.out.printf("Kembalian: %.0f%n", (bayar - totalDiskon));
-        System.out.println("Selamat!");
+        System.out.println("------------------ Terima Kasih ------------------");
     }
 
     // method menampilkan total harga sewa plus sopir
     public void TotalHargaSewaPlusSopir(String namaSopir, int hariSewa, double jasaSopir) {
         double Total = (hargSewa * hariSewa) + jasaSopir;
         System.out.println("");
-        System.out.println("===============================");
+        System.out.println("=============== Total Sewa + Sopir ===============");
         System.out.println("Nama Kendaraan : " + namaKendaraan);
         System.out.println("Nama Sopir : " + namaSopir);
         System.out.printf("Harga Sewa Kendaraan : %.0f%n", hargSewa);
         System.out.printf("Jumlah Hari Sewa : %d%n", hariSewa);
         System.out.printf("Harga Jasa Sopir : %.0f%n", jasaSopir);
         System.out.printf("Total: %.0f%n", Total);
+        System.out.println("---------------------------------------------------");
     }
 
     // method menampilkan struk total semunanya di sewa plus sopir
     public void TotalHargaSewaPlusSopirStruk(String namaSopir, int hariSewa, double jasaSopir, double bayar) {
         double Total = (hargSewa * hariSewa) + jasaSopir;
         System.out.println("");
-        System.out.println("===============================");
+        System.out.println("=============== Struk Sewa + Sopir ===============");
         System.out.println("Nama Kendaraan : " + namaKendaraan);
         System.out.println("Nama Sopir : " + namaSopir);
         System.out.printf("Harga Sewa Kendaraan : %.0f%n", hargSewa);
@@ -73,7 +76,7 @@ public class Kendaraan {
         System.out.printf("Total: %.0f%n", Total);
         System.out.printf("Jumlah yang dibayar : %.0f%n", bayar);
         System.out.printf("Kembalian: %.0f%n", (bayar - Total));
-        System.out.println("Selamat!");
+        System.out.println("------------------ Terima Kasih ------------------");
     }
 
     // method untuk menampilkan list kendaraan dan harga sewa
@@ -86,10 +89,16 @@ public class Kendaraan {
         stok--;
     }
 
+    // method cek stok sebelum masuk ke pembayaran
+    public boolean cekStok() {
+        return stok != 0;
+    }
+
     // method untuk menampilkan list stok kendaraan
     public void TampilkanStok() {
         System.out.println("Nama Kendaraan: " + namaKendaraan);
         System.out.printf("Harga Sewa: %.0f%n", hargSewa);
         System.out.println("Stok: " + stok);
+        System.out.println("------------------------------------");
     }
 }
