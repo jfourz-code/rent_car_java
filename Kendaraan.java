@@ -16,8 +16,8 @@ public class Kendaraan {
     }
 
     // method sewa lepas + hitung diskon 15%
-    public double sewaLepas(int hariSewa) {
-        return (hariSewa * hargSewa) - ((hariSewa * hargSewa) * 0.15); 
+    public double sewaLepas(int hariSewa, int diskon) {
+        return (hariSewa * hargSewa) - ((hariSewa * hargSewa) * diskon / 100);
     }
 
     // methiod sewaPlusSopir hitung totalnya
@@ -26,26 +26,29 @@ public class Kendaraan {
     }
 
     // method menampilkan total harga sewaLepas
-    public void TotalHargaSewa(int hariSewa, double diskonTotal) {
+    public void TotalHargaSewa(int hariSewa,int diskon, double diskonTotal) {
         double Total = hargSewa * hariSewa;
         System.out.println("");
         System.out.println("=============== Total Sewa Lepas ===============");
         System.out.println("Nama Kendaraan: " + namaKendaraan);
         System.out.printf("Total : %.0f x %d = %.0f%n", hargSewa, hariSewa, Total);
-        System.out.println("Selamat Anda Mendapatkan Diskon 15%");
+        System.out.println("Selamat Anda Mendapatkan Diskon " + diskon + "%");
         System.out.printf("Total Bayar Menjadi : %.0f%n", diskonTotal);
         System.out.println("-------------------------------------------------");
     }
 
     // method menampilkan struk total semuanya + diskon pada sewaLepas
-    public void TotalHargaSewaDiskon(int hariSewa, double totalDiskon, double bayar) {
+    public void TotalHargaSewaDiskon(int hariSewa, int diskon, double totalDiskon, double bayar) {
         System.out.println("");
         System.out.println("=============== Struk Sewa Lepas ===============");
         System.out.println("Nama Kendaraan: " + namaKendaraan);
+        System.out.println("Harga Sewa: " + hargSewa);
         System.out.println("Jumlah Hari Sewa: " + hariSewa);
-        System.out.printf("Total + Diskon : %.0f x %d + 15%% Diskon = %.0f%n", hargSewa, hariSewa, totalDiskon);
-        System.out.printf("Jumlah yang dibayar : %.0f%n", bayar);
-        System.out.printf("Kembalian: %.0f%n", (bayar - totalDiskon));
+        System.out.println("Total : " + hargSewa * hariSewa);
+        System.out.println("Diskon: " + diskon + "%");
+        System.out.println("Total + Diskon: " + totalDiskon);
+        System.out.printf("Tunai : %.0f%n", bayar);
+        System.out.printf("Kembali: %.0f%n", (bayar - totalDiskon));
         System.out.println("------------------ Terima Kasih ------------------");
     }
 
@@ -74,8 +77,8 @@ public class Kendaraan {
         System.out.printf("Jumlah Hari Sewa : %d%n", hariSewa);
         System.out.printf("Harga Jasa Sopir : %.0f%n", jasaSopir);
         System.out.printf("Total: %.0f%n", Total);
-        System.out.printf("Jumlah yang dibayar : %.0f%n", bayar);
-        System.out.printf("Kembalian: %.0f%n", (bayar - Total));
+        System.out.printf("Tunai : %.0f%n", bayar);
+        System.out.printf("Kembali: %.0f%n", (bayar - Total));
         System.out.println("------------------ Terima Kasih ------------------");
     }
 

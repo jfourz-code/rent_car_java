@@ -72,24 +72,29 @@ public class Main {
                     System.out.println("Input Tidak Valid");
                 } else {
                     // jika valid lanjut ke bagian ini
-                    System.out.println("");
-                    // menghitung diskon
-                    double diskon =  listKendaraan[pilihanMobilUser].sewaLepas(sewa);
-                    // menghitung total harga setelah diskon
-                    listKendaraan[pilihanMobilUser].TotalHargaSewa(sewa, diskon);
+                    System.out.print("Masukkan Diskon: ");
+                    int diskonUser = input.nextInt();
+                    if (diskonUser < 0 || diskonUser > 100) {
+                        System.out.println("Diskon Tidak Valid!");
+                    } else {
+                        // menghitung diskon
+                        double diskon =  listKendaraan[pilihanMobilUser].sewaLepas(sewa, diskonUser);
+                        // menghitung total harga setelah diskon
+                        listKendaraan[pilihanMobilUser].TotalHargaSewa(sewa, diskonUser, diskon);
 
-                    System.out.println("");
-                    // user membayar
-                    System.out.print("Uang yang dibayar: ");
-                    double bayar = input.nextDouble();
+                        System.out.println("");
+                        // user membayar
+                        System.out.print("Uang yang dibayar: ");
+                        double bayar = input.nextDouble();
 
-                    // cek kondisi
-                    if (bayar < diskon) { // jika kurang maka akan ada pesan bahwa uang kurang
-                        System.out.println("Maaf uang anda kurang..");
-                    } else { // jika tidak maka, akan menampilkan struk dan berhasil sewa
-                        listKendaraan[pilihanMobilUser].TotalHargaSewaDiskon(sewa, diskon, bayar);
-                        // dan kurangin stok dari kendaraannya 
-                        listKendaraan[pilihanMobilUser].KurangiStok();
+                        // cek kondisi
+                        if (bayar < diskon) { // jika kurang maka akan ada pesan bahwa uang kurang
+                            System.out.println("Maaf uang anda kurang..");
+                        } else { // jika tidak maka, akan menampilkan struk dan berhasil sewa
+                            listKendaraan[pilihanMobilUser].TotalHargaSewaDiskon(sewa,diskonUser, diskon, bayar);
+                            // dan kurangin stok dari kendaraannya 
+                            listKendaraan[pilihanMobilUser].KurangiStok();
+                        }
                     }
                 }
             }
