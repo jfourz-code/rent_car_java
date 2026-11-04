@@ -22,16 +22,16 @@ Pengguna dapat memilih kendaraan, menentukan lama sewa, memilih apakah ingin men
 
 ```
 rent_car_java/
-├── Main.java        # Program utama: menu, alur transaksi, dan data awal
+├── RentalKendaraan.java        # Program utama: menu, alur transaksi, dan data awal
 ├── Kendaraan.java   # Class kendaraan: harga, stok, perhitungan, dan struk
 └── Sopir.java       # Class sopir: nama dan tarif jasa
 ```
 
-| File | Deskripsi |
-|------|-----------|
-| `Main.java` | Berisi `main()`, menu interaktif, dan method `forListKendaraan()` serta `forListSopir()` untuk menyiapkan data awal. |
-| `Kendaraan.java` | Menyimpan nama, harga sewa per hari, dan stok. Berisi method perhitungan harga, pengecekan/pengurangan stok, serta pencetakan total dan struk. |
-| `Sopir.java` | Menyimpan nama sopir dan harga layanan, dilengkapi getter dan method untuk menampilkan data. |
+| File                   | Deskripsi                                                                                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RentalKendaraan.java` | Berisi `main()`, menu interaktif, dan method `forListKendaraan()` serta `forListSopir()` untuk menyiapkan data awal.                           |
+| `Kendaraan.java`       | Menyimpan nama, harga sewa per hari, dan stok. Berisi method perhitungan harga, pengecekan/pengurangan stok, serta pencetakan total dan struk. |
+| `Sopir.java`           | Menyimpan nama sopir dan harga layanan, dilengkapi getter dan method untuk menampilkan data.                                                   |
 
 ---
 
@@ -87,6 +87,7 @@ Pilih Menu:
 ```
 
 ### 1. Sewa Lepas Kunci
+
 1. Pilih kendaraan dari daftar.
 2. Masukkan jumlah hari sewa.
 3. Program menampilkan total harga dan **diskon 15%**.
@@ -94,6 +95,7 @@ Pilih Menu:
 5. Jika uang cukup, struk dicetak beserta kembalian dan stok berkurang satu.
 
 ### 2. Sewa Dengan Sopir
+
 1. Pilih kendaraan dari daftar.
 2. Masukkan jumlah hari sewa.
 3. Pilih sopir dari daftar.
@@ -101,16 +103,18 @@ Pilih Menu:
 5. Masukkan jumlah uang yang dibayar. Jika cukup, struk dicetak dan stok berkurang satu.
 
 ### 3. Stok Kendaraan
+
 Menampilkan nama, harga sewa, dan sisa stok seluruh kendaraan.
 
 ### 4. Keluar
+
 Mengakhiri program.
 
 ---
 
 ## 💰 Rumus Perhitungan
 
-| Jenis Sewa | Rumus |
-|------------|-------|
-| Lepas Kunci | `(harga sewa × hari) − 15%` |
+| Jenis Sewa   | Rumus                              |
+| ------------ | ---------------------------------- |
+| Lepas Kunci  | `(harga sewa × hari) − 15%`        |
 | Dengan Sopir | `(harga sewa × hari) + jasa sopir` |
