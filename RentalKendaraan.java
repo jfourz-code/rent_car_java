@@ -145,21 +145,21 @@ public class RentalKendaraan {
                     System.out.print("Pilih Sopir: ");
                     int pilihanSopir = input.nextInt();
 
-                    // menyimpan pilihan sopir user
-                    int pilihanSopirUser = pilihanSopir - 1;
-                    // menyimpan nama sopir
-                    String namaSopir = listSopir[pilihanSopirUser].getNamaSopir();
-                    // menyimpan harga layanan sopir
-                    double jasaSopir = listSopir[pilihanSopirUser].getHargaLayanan();
-                    // menyimpan harga sewa mobil
-                    double hargaSewaMobil = listKendaraan[pilihanMobilUser].hargaSewaKendaraan();
-
                     // cek kondisi jika user memilih sopir diluar dari menu
                     if (pilihanSopir <= 0 || pilihanSopir > listSopir.length) {
                         System.out.println("Pilihan tidak valid!");
                     } else {
+                        // menyimpan pilihan sopir user
+                        int pilihanSopirUser = pilihanSopir - 1;
+                        // menyimpan nama sopir
+                        String namaSopir = listSopir[pilihanSopirUser].getNamaSopir();
+                        // menyimpan harga layanan sopir
+                        double jasaSopir = listSopir[pilihanSopirUser].getHargaLayanan();
+
+
+
                         // menghitung total harga
-                        double harga = listKendaraan[pilihanMobilUser].sewaPlusSopir(sewa, hargaSewaMobil);
+                        double harga = listKendaraan[pilihanMobilUser].sewaPlusSopir(sewa, jasaSopir);
                         // menampilkan total ke user
                         listKendaraan[pilihanMobilUser].TotalHargaSewaPlusSopir(namaSopir, sewa, jasaSopir);
 
@@ -191,6 +191,8 @@ public class RentalKendaraan {
             mulai = false;
             // pesan bahwa sudah keluar dari menu
             System.out.println("Anda Keluar.....");
+        } else {
+            System.out.println("Input tidak valid");
         }
         } while (mulai);
 
@@ -198,9 +200,6 @@ public class RentalKendaraan {
 
     static Kendaraan[] forListKendaraan() {
         Kendaraan[] listKendaraan = {
-            new Kendaraan("Mazda MX-5",           3_000_000,  5),
-            new Kendaraan("Toyota GR86",          3_500_000,  5),
-            new Kendaraan("Ford Mustang GT",      5_500_000,  5),
             new Kendaraan("Chevrolet Camaro SS",  6_000_000,  5),
             new Kendaraan("BMW M4 Competition",   8_000_000,  5),
             new Kendaraan("Porsche 718 Cayman",   9_000_000,  2),
@@ -219,7 +218,6 @@ public class RentalKendaraan {
         new Sopir("Gede Cenik",    300_000),
         new Sopir("Komang Tiga",    400_000),
         new Sopir("Ketut Empat", 450_000),
-        new Sopir("Nyoman Man",   500_000),
         new Sopir("Wayan Ancog",  250_000)
     };
     return listSopir;
