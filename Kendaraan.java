@@ -42,11 +42,11 @@ public class Kendaraan {
         System.out.println("");
         System.out.println("=============== Struk Sewa Lepas ===============");
         System.out.println("Nama Kendaraan: " + namaKendaraan);
-        System.out.println("Harga Sewa: " + hargaSewa);
+        System.out.printf("Harga Sewa: %.0f%n", hargaSewa);
         System.out.println("Jumlah Hari Sewa: " + hariSewa);
-        System.out.println("Total : " + hargaSewa * hariSewa);
+        System.out.printf("Total : %.0f%n", hargaSewa * hariSewa);
         System.out.println("Diskon: " + diskon + "%");
-        System.out.println("Total + Diskon: " + totalDiskon);
+        System.out.printf("Total + Diskon: %.0f%n", totalDiskon);
         System.out.printf("Tunai : %.0f%n", bayar);
         System.out.printf("Kembali: %.0f%n", (bayar - totalDiskon));
         System.out.println("------------------ Terima Kasih ------------------");
